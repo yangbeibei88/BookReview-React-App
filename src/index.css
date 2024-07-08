@@ -26,11 +26,11 @@ ul {
 
 
 header {
-  height: 70px;
-  width: 100%;
   display: flex;
+  height: auto;
+  width: 100%;
   justify-content: space-between;
-  align-items: center;
+  padding: 1em 0;
   align-items: center;
   margin-bottom: 30px;
 }
@@ -129,11 +129,11 @@ input:focus {
   outline: none;
 }
 
-.feedback-stats {
+.review-stats {
   color: #fff;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }
 
 .num-display {
