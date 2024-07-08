@@ -1,8 +1,9 @@
-export const FeedbackItem = ({ rating, feedback }) => {
+import { Card } from "./shared/Card.jsx";
+export const ReviewItem = ({ rating, feedback }) => {
   return (
-    <div className="card">
+    <Card>
       <div className="num-display">{rating}</div>
       <div className="text-display">{feedback}</div>
-    </div>
+    </Card>
   );
 };

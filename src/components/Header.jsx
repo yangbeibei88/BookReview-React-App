@@ -6,7 +6,7 @@ export const Header = () => {
   return (
     <header style={headerStyle}>
       <div className="container">
-        <h1>Simple Feedback React App</h1>
+        <h1>Simple Book Review React App</h1>
       </div>
     </header>
   );

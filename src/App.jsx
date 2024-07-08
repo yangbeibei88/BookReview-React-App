@@ -1,14 +1,14 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { Header } from "./components/Header.jsx";
-import { FeedbackList } from "./components/FeedbackList.jsx";
-import { feedbackData } from "./data/feedbackData.js";
+import { ReviewList } from "./components/ReviewList.jsx";
+import { reviewData } from "./data/reviewData.js";
 
 const App = () => {
   return (
     <div>
       <Header />
-      <FeedbackList feedbacks={feedbackData} />
+      <ReviewList feedbacks={reviewData} />
     </div>
   );
 };

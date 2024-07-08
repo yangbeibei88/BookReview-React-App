@@ -1,4 +1,4 @@
-export const feedbackData = [
+export const reviewData = [
   {
     id: 1,
     rating: 10,
