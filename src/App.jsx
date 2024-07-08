@@ -8,7 +8,7 @@ const App = () => {
   return (
     <div>
       <Header />
-      <ReviewList feedbacks={reviewData} />
+      <ReviewList reviews={reviewData} />
     </div>
   );
 };

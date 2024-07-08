@@ -1,7 +1,7 @@
 export const Header = () => {
   const headerStyle = {
     backgroundColor: "rgba(0,0,0,0.4)",
-    color: "#ff6a95",
+    color: "#5ec2d7",
   };
   return (
     <header style={headerStyle}>
