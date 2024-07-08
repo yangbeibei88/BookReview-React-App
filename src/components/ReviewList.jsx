@@ -1,19 +1,13 @@
 import { ReviewItem } from "./ReviewItem.jsx";
-export const ReviewList = ({ reviews }) => {
+export const ReviewList = ({ reviews, handleDelete }) => {
   if (reviews.length === 0) {
     return <p>No feedback yet.</p>;
   } else {
     return (
-      <div className="container">
-        {reviews.map(({ id, rating, bookTitle, review, date }) => {
+      <div className="review-list">
+        {reviews.map((item) => {
           return (
-            <ReviewItem
-              key={id}
-              rating={rating}
-              bookTitle={bookTitle}
-              review={review}
-              date={date}
-            />
+            <ReviewItem key={item.id} item={item} handleDelete={handleDelete} />
           );
         })}
       </div>
