@@ -1,17 +1,18 @@
 import { useState } from "react";
 import { FormContainer } from "./shared/FormContainer.jsx";
+import { Button } from "./shared/Button.jsx";
 export const ReviewForm = () => {
   const [bookTitle, setBookTitle] = useState("");
   const [reviewText, setReviewText] = useState("");
 
   const handleBookTitleChange = (e) => {
     setBookTitle(e.target.value);
-    console.log(e.target.value);
+    // console.log(e.target.value);
   };
 
   const handleReviewTextChange = (e) => {
     setReviewText(e.target.value);
-    console.log(e.target.value);
+    // console.log(e.target.value);
   };
   return (
     <FormContainer>
@@ -40,9 +41,9 @@ export const ReviewForm = () => {
             onChange={handleReviewTextChange}
           ></textarea>
         </div>
-        <button type="submit" className="btn btn-primary">
+        <Button version={"secondary"} type={"submit"}>
           Submit Review
-        </button>
+        </Button>
       </form>
     </FormContainer>
   );

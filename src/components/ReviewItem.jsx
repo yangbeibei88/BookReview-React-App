@@ -7,8 +7,8 @@ export const ReviewItem = ({ item, handleDelete }) => {
       <button className="close" onClick={() => handleDelete(item.id)}>
         <FaTimes color="red" />
       </button>
-      <h2>{item.bookTitle}</h2>
-      <div className="text-display">{item.review}</div>
+      <h2 className="title">{item.bookTitle}</h2>
+      <p className="text-display">{item.review}</p>
       <small>{item.date}</small>
     </Card>
   );
