@@ -4,6 +4,7 @@ import { Header } from "./components/Header.jsx";
 import { ReviewList } from "./components/ReviewList.jsx";
 import { reviewData } from "./data/reviewData.js";
 import { ReviewStats } from "./components/ReviewStats.jsx";
+import { ReviewForm } from "./components/ReviewForm.jsx";
 
 const App = () => {
   const [data, setData] = useState(reviewData);
@@ -17,8 +18,11 @@ const App = () => {
   return (
     <div>
       <Header />
-      <ReviewStats reviews={data} />
-      <ReviewList reviews={data} handleDelete={deleteFeedback} />
+      <div className="container">
+        <ReviewForm />
+        <ReviewStats reviews={data} />
+        <ReviewList reviews={data} handleDelete={deleteFeedback} />
+      </div>
     </div>
   );
 };

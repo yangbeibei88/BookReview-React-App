@@ -1,3 +1,5 @@
 export const Card = ({ children, reverse = "" }) => {
-  return <div className={`card ${reverse && "reverse"}`}>{children}</div>;
+  return (
+    <article className={`card ${reverse && "reverse"}`}>{children}</article>
+  );
 };

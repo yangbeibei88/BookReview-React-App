@@ -18,7 +18,10 @@ ul {
 }
 
 .container {
-  max-width: 768px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 1320px;
   margin: auto;
   padding: 0 20px;
 }
@@ -35,19 +38,32 @@ header {
   margin-bottom: 30px;
 }
 
+.form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: 1em;
+  background-color: #fff;
+  color: #333;
+}
+
 .review-list {
   display: flex;
+  width: 100%;
   justify-content:space-between;
   flex-flow: row wrap;
-  max-width: 1280px;
   margin: 1em auto;
 }
 .card {
+  flex: auto;
   background-color: #fff;
   color: #333;
   width: 600px;
+  /* min-width: 350px; */
   border-radius: 15px;
-  padding: 40px 50px;
+  padding: 40px 20px;
   margin: 1em;
   position: relative;
 }
@@ -114,6 +130,8 @@ header {
 .input-group {
   display: flex;
   flex-direction: row;
+  width: 100%;
+  gap: 10px;
   border: 1px solid #ccc;
   padding: 8px 10px;
   border-radius: 8px;
@@ -127,6 +145,17 @@ input {
 
 input:focus {
   outline: none;
+}
+
+textarea {
+  width: 100%;
+  background: white;
+  
+}
+
+.submit-btn {
+  cursor: pointer;
+  width:fit-content;
 }
 
 .review-stats {
