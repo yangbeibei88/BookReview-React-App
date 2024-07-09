@@ -4,14 +4,26 @@ import { Button } from "./shared/Button.jsx";
 export const ReviewForm = () => {
   const [bookTitle, setBookTitle] = useState("");
   const [reviewText, setReviewText] = useState("");
+  const [btnDisabled, setBtnDisabled] = useState(true);
+  const [message, setMessage] = useState("");
 
   const handleBookTitleChange = (e) => {
     setBookTitle(e.target.value);
-    // console.log(e.target.value);
   };
 
-  const handleReviewTextChange = (e) => {
+  const handleReviewTextChange = async (e) => {
     setReviewText(e.target.value);
+    if (reviewText === "") {
+      setBtnDisabled(true);
+      setMessage(null);
+    } else if (reviewText.trim().length < 10 && reviewText !== "") {
+      setBtnDisabled(true);
+      setMessage("Review must be more than 10 characters");
+    } else {
+      setBtnDisabled(false);
+      setMessage(null);
+    }
+
     // console.log(e.target.value);
   };
   return (
@@ -39,9 +51,12 @@ export const ReviewForm = () => {
             placeholder="Write a review for this book."
             value={reviewText}
             onChange={handleReviewTextChange}
-          ></textarea>
+          >
+            {reviewText}
+          </textarea>
+          {message && <div className="message">{message}</div>}
         </div>
-        <Button version={"secondary"} type={"submit"}>
+        <Button version={"secondary"} type={"submit"} isDisabled={btnDisabled}>
           Submit Review
         </Button>
       </form>
