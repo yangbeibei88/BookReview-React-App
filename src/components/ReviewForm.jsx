@@ -1,8 +1,10 @@
 import { useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 import { FormContainer } from "./shared/FormContainer.jsx";
 import { Button } from "./shared/Button.jsx";
 import { RatingSelect } from "./RatingSelect.jsx";
-export const ReviewForm = () => {
+
+export const ReviewForm = ({ addReview }) => {
   const [bookTitle, setBookTitle] = useState("");
   const [reviewText, setReviewText] = useState("");
   const [btnDisabled, setBtnDisabled] = useState(true);
@@ -31,9 +33,28 @@ export const ReviewForm = () => {
     setRating(+e.target.value);
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (reviewText.trim().length > 10) {
+      const newReview = {
+        id: uuidv4(),
+        rating: rating,
+        bookTitle: bookTitle,
+        review: reviewText,
+      };
+
+      // console.log(newReview);
+
+      addReview(newReview);
+      setBookTitle("");
+      setReviewText("");
+      setBtnDisabled(true);
+    }
+  };
+
   return (
     <FormContainer>
-      <form className="form-container">
+      <form className="form-container" onSubmit={handleSubmit}>
         <h2> Write a review for a book you read📖.</h2>
         {/* @todo - rating select component */}
         {/* <RatingSelect selected={rating} setSelected={setRating} /> */}

@@ -8,20 +8,27 @@ import { ReviewForm } from "./components/ReviewForm.jsx";
 
 const App = () => {
   const [data, setData] = useState(reviewData);
-  const deleteFeedback = (id) => {
+
+  const deleteReview = (id) => {
     if (confirm(`Are you sure you want to delete your book review#${id}?`)) {
       setData(data.filter((item) => item.id !== id));
       console.log(`Review # ${id} deleted!`);
     }
   };
 
+  const handleAdd = (newReview) => {
+    console.log(newReview);
+    // setData(data.concat(newReview));
+    setData([newReview, ...data]);
+  };
+
   return (
     <div>
       <Header />
       <div className="container">
-        <ReviewForm />
+        <ReviewForm addReview={handleAdd} />
         <ReviewStats reviews={data} />
-        <ReviewList reviews={data} handleDelete={deleteFeedback} />
+        <ReviewList reviews={data} handleDelete={deleteReview} />
       </div>
     </div>
   );
