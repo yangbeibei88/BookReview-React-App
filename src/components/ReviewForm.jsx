@@ -1,17 +1,19 @@
 import { useState } from "react";
 import { FormContainer } from "./shared/FormContainer.jsx";
 import { Button } from "./shared/Button.jsx";
+import { RatingSelect } from "./RatingSelect.jsx";
 export const ReviewForm = () => {
   const [bookTitle, setBookTitle] = useState("");
   const [reviewText, setReviewText] = useState("");
   const [btnDisabled, setBtnDisabled] = useState(true);
   const [message, setMessage] = useState("");
+  const [rating, setRating] = useState(10);
 
   const handleBookTitleChange = (e) => {
     setBookTitle(e.target.value);
   };
 
-  const handleReviewTextChange = async (e) => {
+  const handleReviewTextChange = (e) => {
     setReviewText(e.target.value);
     if (reviewText === "") {
       setBtnDisabled(true);
@@ -23,14 +25,19 @@ export const ReviewForm = () => {
       setBtnDisabled(false);
       setMessage(null);
     }
-
-    // console.log(e.target.value);
   };
+
+  const handleRatingChange = (e) => {
+    setRating(+e.target.value);
+  };
+
   return (
     <FormContainer>
       <form className="form-container">
         <h2> Write a review for a book you read📖.</h2>
         {/* @todo - rating select component */}
+        {/* <RatingSelect selected={rating} setSelected={setRating} /> */}
+        <RatingSelect ratingValue={rating} handleChange={handleRatingChange} />
         <div className="input-group">
           <label htmlFor="book-title">Book Title:</label>
           <input
