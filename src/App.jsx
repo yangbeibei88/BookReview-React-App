@@ -1,12 +1,13 @@
 import { StrictMode, useState } from "react";
 import { createRoot } from "react-dom/client";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Header } from "./components/Header.jsx";
 import { ReviewList } from "./components/ReviewList.jsx";
 import { reviewData } from "./data/reviewData.js";
 import { ReviewStats } from "./components/ReviewStats.jsx";
 import { ReviewForm } from "./components/ReviewForm.jsx";
 import { AboutPage } from "./pages/AboutUs.jsx";
+import { Footer } from "./components/Footer.jsx";
 
 const App = () => {
   const [data, setData] = useState(reviewData);
@@ -42,6 +43,7 @@ const App = () => {
           <Route path="/about" element={<AboutPage />} />
         </Routes>
       </div>
+      <Footer />
     </BrowserRouter>
   );
 };
