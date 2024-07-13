@@ -2,14 +2,17 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useContext } from "react";
 import { ReviewItem } from "./ReviewItem.jsx";
 import { ReviewContext } from "../context/ReviewContext.jsx";
+import { Spinner } from "./shared/Spinner.jsx";
 
 export const ReviewList = () => {
-  const { reviews } = useContext(ReviewContext);
+  const { reviews, isLoading } = useContext(ReviewContext);
 
-  if (reviews.length === 0) {
+  if (reviews.length === 0 && !isLoading) {
     return <p>No feedback yet.</p>;
   } else {
-    return (
+    return isLoading ? (
+      <Spinner />
+    ) : (
       <div className="review-list">
         <AnimatePresence>
           {reviews.map((item) => {
