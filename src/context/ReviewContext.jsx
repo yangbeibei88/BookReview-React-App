@@ -1,4 +1,5 @@
 import { createContext, useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 
 export const ReviewContext = createContext();
 
@@ -30,6 +31,7 @@ export const ReviewProvider = ({ children }) => {
   });
 
   const addReview = (newReview) => {
+    newReview.id = uuidv4();
     console.log(newReview);
     setReviews([newReview, ...reviews]);
   };
@@ -45,14 +47,23 @@ export const ReviewProvider = ({ children }) => {
     setReviewEdit({ item, edit: true });
   };
 
+  const updateReview = (id, updatedItem) => {
+    setReviews(
+      reviews.map((item) =>
+        item.id === id ? { ...item, ...updatedItem } : item,
+      ),
+    );
+  };
+
   return (
     <ReviewContext.Provider
       value={{
         reviews,
+        reviewEdit,
         deleteReview,
         addReview,
         editReview,
-        reviewEdit,
+        updateReview,
       }}
     >
       {children}

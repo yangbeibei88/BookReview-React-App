@@ -1,5 +1,4 @@
 import { useState, useContext, useEffect } from "react";
-import { v4 as uuidv4 } from "uuid";
 import { FormContainer } from "./shared/FormContainer.jsx";
 import { Button } from "./shared/Button.jsx";
 import { RatingSelect } from "./RatingSelect.jsx";
@@ -11,7 +10,7 @@ export const ReviewForm = () => {
   const [btnDisabled, setBtnDisabled] = useState(true);
   const [message, setMessage] = useState("");
   const [rating, setRating] = useState(10);
-  const { addReview, reviewEdit } = useContext(ReviewContext);
+  const { addReview, reviewEdit, updateReview } = useContext(ReviewContext);
 
   useEffect(() => {
     if (reviewEdit.edit === true) {
@@ -48,7 +47,6 @@ export const ReviewForm = () => {
     e.preventDefault();
     if (reviewText.trim().length > 10) {
       const newReview = {
-        id: uuidv4(),
         rating: rating,
         bookTitle: bookTitle,
         review: reviewText,
@@ -56,7 +54,11 @@ export const ReviewForm = () => {
 
       // console.log(newReview);
 
-      addReview(newReview);
+      if (reviewEdit.edit === true) {
+        updateReview(reviewEdit.item.id, newReview);
+      } else {
+        addReview(newReview);
+      }
       setBookTitle("");
       setReviewText("");
       setBtnDisabled(true);
