@@ -1,6 +1,11 @@
 import { motion, AnimatePresence } from "framer-motion";
+import { useContext } from "react";
 import { ReviewItem } from "./ReviewItem.jsx";
-export const ReviewList = ({ reviews, handleDelete }) => {
+import { ReviewContext } from "../context/ReviewContext.jsx";
+
+export const ReviewList = ({ handleDelete }) => {
+  const { reviews } = useContext(ReviewContext);
+
   if (reviews.length === 0) {
     return <p>No feedback yet.</p>;
   } else {

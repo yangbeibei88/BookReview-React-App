@@ -37,8 +37,8 @@ const App = () => {
               element={
                 <>
                   <ReviewForm addReview={handleAdd} />
-                  <ReviewStats reviews={data} />
-                  <ReviewList reviews={data} handleDelete={deleteReview} />
+                  <ReviewStats />
+                  <ReviewList handleDelete={deleteReview} />
                 </>
               }
             ></Route>
