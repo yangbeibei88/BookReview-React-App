@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { ReviewItem } from "./ReviewItem.jsx";
 import { ReviewContext } from "../context/ReviewContext.jsx";
 
-export const ReviewList = ({ handleDelete }) => {
+export const ReviewList = () => {
   const { reviews } = useContext(ReviewContext);
 
   if (reviews.length === 0) {
@@ -20,11 +20,7 @@ export const ReviewList = ({ handleDelete }) => {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
               >
-                <ReviewItem
-                  key={item.id}
-                  item={item}
-                  handleDelete={handleDelete}
-                />
+                <ReviewItem key={item.id} item={item} />
               </motion.div>
             );
           })}

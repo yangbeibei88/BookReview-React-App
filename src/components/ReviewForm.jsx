@@ -1,15 +1,18 @@
 import { useState } from "react";
+import { useContext } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { FormContainer } from "./shared/FormContainer.jsx";
 import { Button } from "./shared/Button.jsx";
 import { RatingSelect } from "./RatingSelect.jsx";
+import { ReviewContext } from "../context/ReviewContext.jsx";
 
-export const ReviewForm = ({ addReview }) => {
+export const ReviewForm = () => {
   const [bookTitle, setBookTitle] = useState("");
   const [reviewText, setReviewText] = useState("");
   const [btnDisabled, setBtnDisabled] = useState(true);
   const [message, setMessage] = useState("");
   const [rating, setRating] = useState(10);
+  const { addReview } = useContext(ReviewContext);
 
   const handleBookTitleChange = (e) => {
     setBookTitle(e.target.value);
