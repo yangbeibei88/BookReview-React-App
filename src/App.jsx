@@ -8,6 +8,7 @@ import { ReviewStats } from "./components/ReviewStats.jsx";
 import { ReviewForm } from "./components/ReviewForm.jsx";
 import { AboutPage } from "./pages/AboutUs.jsx";
 import { Footer } from "./components/Footer.jsx";
+import { ReviewProvider } from "./context/ReviewContext.jsx";
 
 const App = () => {
   const [data, setData] = useState(reviewData);
@@ -26,25 +27,27 @@ const App = () => {
   };
 
   return (
-    <BrowserRouter>
-      <Header />
-      <div className="container">
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <>
-                <ReviewForm addReview={handleAdd} />
-                <ReviewStats reviews={data} />
-                <ReviewList reviews={data} handleDelete={deleteReview} />
-              </>
-            }
-          ></Route>
-          <Route path="/about" element={<AboutPage />} />
-        </Routes>
-      </div>
-      <Footer />
-    </BrowserRouter>
+    <ReviewProvider>
+      <BrowserRouter>
+        <Header />
+        <div className="container">
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <>
+                  <ReviewForm addReview={handleAdd} />
+                  <ReviewStats reviews={data} />
+                  <ReviewList reviews={data} handleDelete={deleteReview} />
+                </>
+              }
+            ></Route>
+            <Route path="/about" element={<AboutPage />} />
+          </Routes>
+        </div>
+        <Footer />
+      </BrowserRouter>
+    </ReviewProvider>
   );
 };
 
