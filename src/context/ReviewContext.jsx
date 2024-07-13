@@ -52,6 +52,7 @@ export const ReviewProvider = ({ children }) => {
         deleteReview,
         addReview,
         editReview,
+        reviewEdit,
       }}
     >
       {children}
