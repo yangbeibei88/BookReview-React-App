@@ -24,6 +24,16 @@ export const ReviewProvider = ({ children }) => {
     },
   ]);
 
+  const [reviewEdit, setReviewEdit] = useState({
+    item: {},
+    edit: false,
+  });
+
+  const addReview = (newReview) => {
+    console.log(newReview);
+    setReviews([newReview, ...reviews]);
+  };
+
   const deleteReview = (id) => {
     if (confirm(`Are you sure you want to delete your book review#${id}?`)) {
       setReviews(reviews.filter((item) => item.id !== id));
@@ -31,9 +41,8 @@ export const ReviewProvider = ({ children }) => {
     }
   };
 
-  const addReview = (newReview) => {
-    console.log(newReview);
-    setReviews([newReview, ...reviews]);
+  const editReview = (item) => {
+    setReviewEdit({ item, edit: true });
   };
 
   return (
@@ -42,6 +51,7 @@ export const ReviewProvider = ({ children }) => {
         reviews,
         deleteReview,
         addReview,
+        editReview,
       }}
     >
       {children}
