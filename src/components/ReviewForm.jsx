@@ -26,17 +26,19 @@ export const ReviewForm = () => {
   };
 
   const handleReviewTextChange = (e) => {
-    setReviewText(e.target.value);
+    const reviewText = e.target.value;
+
     if (reviewText === "") {
       setBtnDisabled(true);
       setMessage(null);
-    } else if (reviewText.trim().length < 10 && reviewText !== "") {
+    } else if (reviewText.trim().length < 10) {
       setBtnDisabled(true);
       setMessage("Review must be more than 10 characters");
     } else {
       setBtnDisabled(false);
       setMessage(null);
     }
+    setReviewText(reviewText);
   };
 
   const handleRatingChange = (e) => {

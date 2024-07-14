@@ -25,6 +25,10 @@ export const ReviewProvider = ({ children }) => {
   };
 
   const addReview = async (newReview) => {
+    newReview.postedDate = new Date().toLocaleString("en-AU", {
+      hour12: false,
+      timeZone: "Australia/Brisbane",
+    });
     const response = await fetch(`${server}/reviews`, {
       method: "POST",
       headers: {
@@ -34,7 +38,7 @@ export const ReviewProvider = ({ children }) => {
     });
 
     const newData = await response.json();
-    console.log(newReview);
+    console.log(newData);
     setReviews([newData, ...reviews]);
   };
 
@@ -53,12 +57,22 @@ export const ReviewProvider = ({ children }) => {
   };
 
   const updateReview = async (id, updatedItem) => {
+    const existingResponse = await fetch(`${server}/reviews/${id}`);
+    const existingReview = await existingResponse.json();
+
+    updatedItem.lastUpdated = new Date().toLocaleString("en-AU", {
+      hour12: false,
+      timeZone: "Australia/Brisbane",
+    });
+
+    const updatedReview = { ...existingReview, ...updatedItem };
+
     const response = await fetch(`${server}/reviews/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(updatedItem),
+      body: JSON.stringify(updatedReview),
     });
 
     const updatedData = await response.json();

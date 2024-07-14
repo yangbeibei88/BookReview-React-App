@@ -235,6 +235,16 @@ textarea {
   color: red;
 }
 
+.post-footer {
+  display: flex;
+  flex-direction: column;
+  font-size: 13px;
+  justify-content: center;
+  border-top: 1px solid #ccc;
+  margin-top: 15px;
+  padding-top: 15px;
+}
+
 /* FIX: Remove position: absolute to keep about icon at the bottom of the
  * document */
 .about-link {

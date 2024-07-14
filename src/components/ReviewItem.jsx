@@ -17,7 +17,14 @@ export const ReviewItem = ({ item }) => {
       </button>
       <h2 className="title">{item.bookTitle}</h2>
       <p className="text-display">{item.review}</p>
-      <small>{item.date}</small>
+      <div className="post-footer">
+        <p>
+          <small>Posted at: {item.postedDate}</small>
+        </p>
+        <p>
+          <small>Last Updated: {item.lastUpdated}</small>
+        </p>
+      </div>
     </Card>
   );
 };
