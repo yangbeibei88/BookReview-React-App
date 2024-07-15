@@ -9,7 +9,7 @@ const __dirname = dirname(__filename);
 const server = jsonServer.create();
 const router = jsonServer.router(__dirname + "/db.json");
 const middlewares = jsonServer.defaults();
-const port = process.env.PORT || 10000;
+const port = process.env.PORT || 8080;
 
 server.use(cors());
 server.use(middlewares);
