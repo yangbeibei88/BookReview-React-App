@@ -14,7 +14,7 @@ export const ReviewProvider = ({ children }) => {
     fetchData();
   }, []);
 
-  const server = "https://yangbeibei88.github.io/BookReview-React-App";
+  const server = "http://localhost:8080";
 
   // fetch data
   const fetchData = async () => {
