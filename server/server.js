@@ -9,11 +9,11 @@ const __dirname = dirname(__filename);
 const server = jsonServer.create();
 const router = jsonServer.router(__dirname + "/db.json");
 const middlewares = jsonServer.defaults();
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 10000;
 
 server.use(cors());
 server.use(middlewares);
 server.use(router);
-server.listen(port, "0.0.0.0", () => {
+server.listen(port, () => {
   console.log(`JSON Server is running on port ${port}`);
 });
