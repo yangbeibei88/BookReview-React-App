@@ -14,7 +14,7 @@ export const ReviewProvider = ({ children }) => {
     fetchData();
   }, []);
 
-  const server = "http://localhost:8080";
+  const server = "https://bookreview-react-app.onrender.com";
 
   // fetch data
   const fetchData = async () => {
