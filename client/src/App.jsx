@@ -12,7 +12,7 @@ import { ReviewProvider } from "./context/ReviewContext.jsx";
 const App = () => {
   return (
     <ReviewProvider>
-      <BrowserRouter>
+      <BrowserRouter basename="/BookReview-React-App">
         <Header />
         <div className="container">
           <Routes>
