@@ -5,7 +5,7 @@
   "scripts": {
     "start": "vite --config client/vite.config.js",
     "client": "vite --config client/vite.config.js",
-    "server": "node --env-file=.env server/server.js",
+    "server": "node server/server.js",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "build": "npm run build-client",
     "build-client": "vite build --config client/vite.config.js",
