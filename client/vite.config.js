@@ -5,7 +5,7 @@ export default defineConfig({
   base: "/BookReview-React-App/",
   root: "client/src",
   build: {
-    outDir: "../../dist",
+    outDir: "../dist",
     rollupOptions: {
       output: {
         manualChunks: {
@@ -15,4 +15,5 @@ export default defineConfig({
     },
   },
   plugins: [react()],
+  publicDir: "./public",
 });
