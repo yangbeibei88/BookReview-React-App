@@ -5,4 +5,7 @@ export default defineConfig({
   plugins: [react()],
   root: "src",
   base: "BookReview-React-App",
+  build: {
+    outDir: "../dist",
+  },
 });
