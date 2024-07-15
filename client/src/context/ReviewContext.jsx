@@ -3,7 +3,6 @@ import { createContext, useState, useEffect } from "react";
 export const ReviewContext = createContext();
 
 export const ReviewProvider = ({ children }) => {
-  const server = "http://localhost:8080";
   const [reviews, setReviews] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [reviewEdit, setReviewEdit] = useState({
@@ -14,6 +13,8 @@ export const ReviewProvider = ({ children }) => {
   useEffect(() => {
     fetchData();
   }, []);
+
+  const server = "http://localhost:8080";
 
   // fetch data
   const fetchData = async () => {

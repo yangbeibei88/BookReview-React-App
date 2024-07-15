@@ -3,15 +3,15 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "start": "vite",
-    "dev": "concurrently \"npm:server\" \"npm:start\"",
-    "build": "vite build",
-    "preview": "vite preview",
-    "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx}\"",
-    "lint": "eslint \"src/**/*.{js,jsx,ts,tsx}\" --quiet",
-    "server": "json-server --watch db.json --port 8080",
+    "start": "npm run client",
+    "client": "vite --config client/vite.config.js",
+    "server": "node server/server.js",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "build": "vite build --config client/vite.config.js",
+    "format": "prettier --write \"client/src/**/*.{js,jsx,ts,tsx}\"",
+    "lint": "eslint \"client/src/**/*.{js,jsx,ts,tsx}\" --quiet",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d client/dist"
   },
   "homepage": "https://yangbeibei88.github.io/BookReview-React-App",
   "keywords": [],
@@ -21,6 +21,7 @@
   "devDependencies": {
     "@eslint/js": "^9.6.0",
     "@vitejs/plugin-react": "^4.3.1",
+    "cors": "^2.8.5",
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-import": "^2.29.1",
