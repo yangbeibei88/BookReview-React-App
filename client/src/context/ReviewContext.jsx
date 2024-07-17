@@ -13,7 +13,6 @@ export const ReviewProvider = ({ children }) => {
   const apiURL = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
-    console.log("API URL:", apiURL);
     fetchData();
   }, []);
 

@@ -15,7 +15,6 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d client/dist"
   },
-  "homepage": "https://yangbeibei88.github.io/BookReview-React-App",
   "keywords": [],
   "author": "Beibei Yang",
   "license": "ISC",

@@ -29,6 +29,9 @@ app.get("/", (req, res) => {
 // hook to the path to reviews Router
 app.use("/api/reviews", reviewsRouter);
 
+// server static folder
+app.use(express.static(path.join(__dirname, "../client/dist/index.html")));
+
 app.listen(PORT, () => {
   console.log(`Server is listening to http://localhost:${PORT}`);
 });
