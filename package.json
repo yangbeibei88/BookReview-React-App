@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "start": "vite --config client/vite.config.js",
+    "start": "npm run server",
     "client": "vite --config client/vite.config.js",
     "server": "node server/server.js",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
