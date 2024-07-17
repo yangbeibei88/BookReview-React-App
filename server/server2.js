@@ -25,9 +25,6 @@ app.use(cors());
 // hook to the path to reviews Router
 app.use("/api/reviews", reviewsRouter);
 
-// server static folder
-app.use(express.static(path.join(__dirname, "../client/dist")));
-
 app.listen(PORT, () => {
   console.log(`Server is listening to http://localhost:${PORT}`);
 });
