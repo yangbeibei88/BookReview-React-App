@@ -12,8 +12,7 @@
     "build-client": "vite build --config client/vite.config.js",
     "format": "prettier --write \"client/src/**/*.{js,jsx,ts,tsx}\"",
     "lint": "eslint \"client/src/**/*.{js,jsx,ts,tsx}\" --quiet",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d client/dist"
+    "heroku-postbuild": "npm run build-client"
   },
   "keywords": [],
   "author": "Beibei Yang",
