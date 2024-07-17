@@ -25,6 +25,13 @@ app.use(cors());
 // hook to the path to reviews Router
 app.use("/api/reviews", reviewsRouter);
 
+// Serve static files from the React app
+app.use(express.static(path.join(__dirname, "../client/dist")));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../client/dist/index.html"));
+});
+
 app.listen(PORT, () => {
   console.log(`Server is listening to http://localhost:${PORT}`);
 });
