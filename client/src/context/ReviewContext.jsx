@@ -10,11 +10,11 @@ export const ReviewProvider = ({ children }) => {
     edit: false,
   });
 
+  const apiURL = import.meta.env.VITE_API_URL;
+
   useEffect(() => {
     fetchData();
   }, []);
-
-  const apiURL = import.meta.env.VITE_API_URL;
 
   // display all reviews
   const fetchData = async () => {
