@@ -9,7 +9,7 @@ export const ReviewItem = ({ item }) => {
   return (
     <Card>
       <div className="num-display">{item.rating}</div>
-      <button className="close" onClick={() => deleteReview(item.id)}>
+      <button className="close" onClick={() => deleteReview(item._id)}>
         <FaTimes color="red" />
       </button>
       <button className="edit" onClick={() => editReview(item)}>

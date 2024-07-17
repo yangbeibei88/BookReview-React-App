@@ -14,23 +14,24 @@ export const ReviewProvider = ({ children }) => {
     fetchData();
   }, []);
 
-  const server = import.meta.env.VITE_SERVER_URL;
+  const apiURL = "/api/reviews";
 
-  // fetch data
+  // display all reviews
   const fetchData = async () => {
-    const response = await fetch(`${server}/reviews?_sort=id&_order=desc`);
+    const response = await fetch(apiURL);
     const data = await response.json();
-    // console.log(data);
-    setReviews(data);
+    console.log(data);
+    setReviews(data.data);
     setIsLoading(false);
   };
 
+  // add a review
   const addReview = async (newReview) => {
-    newReview.postedDate = new Date().toLocaleString("en-AU", {
-      hour12: false,
-      timeZone: "Australia/Brisbane",
-    });
-    const response = await fetch(`${server}/reviews`, {
+    // newReview.postedDate = new Date().toLocaleString("en-AU", {
+    //   hour12: false,
+    //   timeZone: "Australia/Brisbane",
+    // });
+    const response = await fetch(apiURL, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -40,35 +41,38 @@ export const ReviewProvider = ({ children }) => {
 
     const newData = await response.json();
     console.log(newData);
-    setReviews([newData, ...reviews]);
+    setReviews([newData.data, ...reviews]);
   };
 
+  // delete a review
   const deleteReview = async (id) => {
     if (confirm(`Are you sure you want to delete your book review#${id}?`)) {
-      await fetch(`${server}/reviews/${id}`, {
+      await fetch(`${apiURL}/${id}`, {
         method: "DELETE",
       });
-      setReviews(reviews.filter((item) => item.id !== id));
+      setReviews(reviews.filter((item) => item._id !== id));
       console.log(`Review # ${id} deleted!`);
     }
   };
 
   const editReview = (item) => {
     setReviewEdit({ item, edit: true });
+    console.log(item._id);
   };
 
+  // update a review
   const updateReview = async (id, updatedItem) => {
-    const existingResponse = await fetch(`${server}/reviews/${id}`);
+    const existingResponse = await fetch(`${apiURL}/${id}`);
     const existingReview = await existingResponse.json();
 
-    updatedItem.lastUpdated = new Date().toLocaleString("en-AU", {
-      hour12: false,
-      timeZone: "Australia/Brisbane",
-    });
+    // updatedItem.lastUpdated = new Date().toLocaleString("en-AU", {
+    //   hour12: false,
+    //   timeZone: "Australia/Brisbane",
+    // });
 
-    const updatedReview = { ...existingReview, ...updatedItem };
+    const updatedReview = { ...existingReview.data, ...updatedItem };
 
-    const response = await fetch(`${server}/reviews/${id}`, {
+    const response = await fetch(`${apiURL}/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -80,7 +84,7 @@ export const ReviewProvider = ({ children }) => {
 
     setReviews(
       reviews.map((item) =>
-        item.id === id ? { ...item, ...updatedData } : item,
+        item._id === id ? { ...item, ...updatedData.data } : item,
       ),
     );
   };

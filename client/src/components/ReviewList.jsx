@@ -18,12 +18,12 @@ export const ReviewList = () => {
           {reviews.map((item) => {
             return (
               <motion.div
-                key={item.id}
+                key={item._id}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
               >
-                <ReviewItem key={item.id} item={item} />
+                <ReviewItem key={item._id} item={item} />
               </motion.div>
             );
           })}

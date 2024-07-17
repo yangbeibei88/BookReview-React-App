@@ -57,10 +57,13 @@ export const ReviewForm = () => {
       // console.log(newReview);
 
       if (reviewEdit.edit === true) {
-        updateReview(reviewEdit.item.id, newReview);
+        updateReview(reviewEdit.item._id, newReview);
+        reviewEdit.edit = false;
       } else {
         addReview(newReview);
       }
+
+      setRating(10);
       setBookTitle("");
       setReviewText("");
       setBtnDisabled(true);
@@ -78,7 +81,7 @@ export const ReviewForm = () => {
           <label htmlFor="book-title">Book Title:</label>
           <input
             type="text"
-            name="book-title"
+            name="bookTitle"
             id="book-title"
             placeholder="Book Name"
             onChange={handleBookTitleChange}
