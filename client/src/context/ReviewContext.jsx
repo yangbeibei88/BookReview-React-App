@@ -14,7 +14,7 @@ export const ReviewProvider = ({ children }) => {
     fetchData();
   }, []);
 
-  const server = "https://bookreview-react-app.onrender.com";
+  const server = import.meta.env.VITE_SERVER_URL;
 
   // fetch data
   const fetchData = async () => {
