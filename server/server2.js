@@ -27,6 +27,9 @@ app.use("/api/reviews", reviewsRouter);
 
 // Serve static files from the React app
 app.use(express.static(path.join(__dirname, "../client/dist")));
+console.log(
+  `Static files served from: ${path.join(__dirname, "../client/dist")}`
+);
 
 app.get("*", (req, res) => {
   console.log(
