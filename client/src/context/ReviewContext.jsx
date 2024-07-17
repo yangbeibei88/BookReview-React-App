@@ -14,7 +14,7 @@ export const ReviewProvider = ({ children }) => {
     fetchData();
   }, []);
 
-  const apiURL = "/api/reviews";
+  const apiURL = import.meta.env.VITE_API_URL;
 
   // display all reviews
   const fetchData = async () => {
