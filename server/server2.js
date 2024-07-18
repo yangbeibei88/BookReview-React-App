@@ -26,17 +26,8 @@ app.use(cors());
 app.use("/api/reviews", reviewsRouter);
 
 // Serve static files from the React app
-app.use(express.static(path.join(__dirname, "../client/dist")));
-console.log(
-  `Static files served from: ${path.join(__dirname, "../client/dist")}`
-);
-
-app.get("*", (req, res) => {
-  console.log(
-    `Serving file: ${path.join(__dirname, "../client/dist/index.html")}`
-  );
-  res.sendFile(path.join(__dirname, "../client/dist/index.html"));
-});
+app.use(express.static(path.join(__dirname, "../client/src")));
+console.log(`Serving file: ${path.join(__dirname, "../client/src")}`);
 
 app.listen(PORT, () => {
   console.log(`Server is listening to http://localhost:${PORT}`);
