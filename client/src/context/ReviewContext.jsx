@@ -10,7 +10,9 @@ export const ReviewProvider = ({ children }) => {
     edit: false,
   });
 
-  const apiURL = import.meta.env.VITE_API_URL;
+  // const apiURL = import.meta.env.VITE_API_URL;
+  const apiURL =
+    "https://book-review-react-app-028d329cbc98.herokuapp.com/api/reviews";
 
   useEffect(() => {
     fetchData();
